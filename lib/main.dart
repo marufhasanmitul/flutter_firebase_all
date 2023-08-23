@@ -7,6 +7,8 @@ Future<void> main() async {
   await Firebase.initializeApp();
   await FirebaseNotificationHandler().initialization();
   await FirebaseNotificationHandler().getToken();
+  await FirebaseNotificationHandler().subscribeToTopics('maruf');
+  FirebaseNotificationHandler().onTokenRefresh();
   runApp(const MyApp());
 }
 

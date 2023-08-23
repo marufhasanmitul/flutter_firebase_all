@@ -36,6 +36,20 @@ class FirebaseNotificationHandler{
     return token;
   }
 
+  void onTokenRefresh(){
+    firebaseMessaging.onTokenRefresh.listen((token) {
+      print('Send to Api $token');
+    });
+  }
+
+  Future<void> subscribeToTopics(String topicName) async {
+    await firebaseMessaging.subscribeToTopic(topicName);
+  }
+
+  Future<void> unSubscribeToTopics(String topicName) async {
+    await firebaseMessaging.unsubscribeFromTopic(topicName);
+  }
+
 
 
 
