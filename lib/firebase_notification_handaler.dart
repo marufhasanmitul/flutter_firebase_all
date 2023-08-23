@@ -62,7 +62,7 @@ class FirebaseNotificationHandler{
 
 
 }
-
+//app kill But Notification get
 Future<void> firebaseMessingBackgroundHandler(RemoteMessage message)async{
   print(message.data);
   print(message.notification?.body?? 'Empty body');
