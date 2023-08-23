@@ -30,6 +30,14 @@ class FirebaseNotificationHandler{
 
   }
 
+  Future<String?>getToken() async {
+    final String? token= await firebaseMessaging.getToken();
+    print(token);
+    return token;
+  }
+
+
+
 
 
 }

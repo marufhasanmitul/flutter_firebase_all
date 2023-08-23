@@ -6,6 +6,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await FirebaseNotificationHandler().initialization();
+  await FirebaseNotificationHandler().getToken();
   runApp(const MyApp());
 }
 
