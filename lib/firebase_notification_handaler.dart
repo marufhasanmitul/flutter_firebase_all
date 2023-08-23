@@ -23,6 +23,11 @@ class FirebaseNotificationHandler{
     
     FirebaseMessaging.onBackgroundMessage(firebaseMessingBackgroundHandler);
 
+    RemoteMessage? message =await FirebaseMessaging.instance.getInitialMessage();
+    if(message!=null){
+      messageHandler(message);
+    }
+
 
   }
 
