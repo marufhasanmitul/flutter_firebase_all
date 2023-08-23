@@ -7,27 +7,27 @@ class FirebaseNotificationHandler{
   Future<void> initialization() async {
     await firebaseMessaging.requestPermission(
         sound: true,
+        announcement: false,
+        carPlay: false,
         badge:true,
         alert: true,
-        criticalAlert: true
+        criticalAlert: false,
+        provisional: false
     );
 
 
     //Listen Notification
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print(message.data);
-      print(message.notification?.body?? 'Empty body');
-      print(message.notification?.title?? 'Empty body');
-    });
+    FirebaseMessaging.onMessage.listen((messageHandler));
 
-    FirebaseMessaging.onMessageOpenedApp.listen((message) {
-      print("This is from Open appp");
-      print(message.notification?.body?? 'Empty body');
-      print(message.notification?.title?? 'Empty body');
-
-    });
+    FirebaseMessaging.onMessageOpenedApp.listen(messageHandler);
 
 
+  }
+
+  Future<void> messageHandler(RemoteMessage message)async{
+    print(message.data);
+    print(message.notification?.body?? 'Empty body');
+    print(message.notification?.title?? 'Empty body');
   }
 
   Future<String?>getToken() async {
