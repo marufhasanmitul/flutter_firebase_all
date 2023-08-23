@@ -20,6 +20,8 @@ class FirebaseNotificationHandler{
     FirebaseMessaging.onMessage.listen((messageHandler));
 
     FirebaseMessaging.onMessageOpenedApp.listen(messageHandler);
+    
+    FirebaseMessaging.onBackgroundMessage(firebaseMessingBackgroundHandler);
 
 
   }
@@ -55,3 +57,11 @@ class FirebaseNotificationHandler{
 
 
 }
+
+Future<void> firebaseMessingBackgroundHandler(RemoteMessage message)async{
+  print(message.data);
+  print(message.notification?.body?? 'Empty body');
+  print(message.notification?.title?? 'Empty body');
+}
+
+
